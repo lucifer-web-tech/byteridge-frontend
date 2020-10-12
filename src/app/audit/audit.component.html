@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">role</th>
+            <th scope="col">name</th>
+            <th scope="col">last Login</th>
+            <th scope="col">last logout</th>
+            <th scope="col">ip</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of logs">
+            <th scope="row">{{log.role}}</th>
+            <td>{{log.firstName}} {{log.lastName}}</td>
+            <td>{{log.lastlog.updatedAt | date: 'short'}}</td>
+            <td>{{log.lastlog.isLogin?(log.lastlog.updatedAt | date: 'short'):'-'}}</td>
+            <td>{{log.lastlog.ip}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <button type="button" class="btn btn-outline-primary float-left" [disabled]="currentPage == 1" (click)="getLogs(currentPage - 1)">Previous</button>
+        </div>
+        <div class="col-sm text-center">
+            Showing {{(currentPage * 5 - 4)}} - {{((totalItems > currentPage * 5) ? currentPage * 5:totalItems)}} of {{totalItems}} items
+        </div>
+        <div class="col-sm">
+            <button type="button" [disabled]="currentPage * 5 >= totalItems" class="btn btn-outline-primary float-right" (click)="getLogs(currentPage + 1)">Next</button>
+        </div>
+    </div>
+</div>
