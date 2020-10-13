@@ -27,7 +27,7 @@ export class AuditComponent implements OnInit, OnDestroy {
                 this.logs = data[0].users;
                 this.totalItems = data[0].count[0].count;
             }
-            this.currentPage = 1;
+            this.currentPage = pagenum;
         });
     }
 
