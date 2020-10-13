@@ -12,9 +12,9 @@
         <tr *ngFor="let log of logs">
             <th scope="row">{{log.role}}</th>
             <td>{{log.firstName}} {{log.lastName}}</td>
-            <td>{{log.lastlog.updatedAt | date: 'short'}}</td>
-            <td>{{!log.lastlog.isLogin?(log.lastlog.updatedAt | date: 'short'):'-'}}</td>
-            <td>{{log.lastlog.ip}}</td>
+            <td>{{(log.lastlog)?(log.lastlog.createdAt | date: 'short'):'no logs'}}</td>
+            <td>{{!log.lastlog?.isLogin?(log.lastlog?.updatedAt | date: 'short'):'-'}}</td>
+            <td>{{log.lastlog?.ip}}</td>
         </tr>
     </tbody>
 </table>
